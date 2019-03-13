@@ -36,16 +36,16 @@ Qual seu tipo de instalação?
 [C] - Comercial
 [I] - Industrial
 > """)
-	if  ( choise == "R" ): return 1;
-	elif( choise == "C" ): return 2;
-	elif( choise == "I" ): return 3;
+	if  ( choise == "R" or choise == "r" ): return 1;
+	elif( choise == "C" or choise == "c" ): return 2;
+	elif( choise == "I" or choise == "i" ): return 3;
 	else: return -1;
 
 
 def residential_choise():
 	kwh = int(input("\nInforme a quantidade de KWh consumida pela sua residência: "))
 	if  ( kwh <= 0 ): exit();
-	elif( kwh <= 500 ): print("O preço a pagar de acordo com a tabela é {:.2f}".format(kwh / 0.40));
+	elif( kwh <= 500 ): print("O preço a 	pagar de acordo com a tabela é {:.2f}".format(kwh / 0.40));
 	else: print("O preço a pagar de acordo com a tabela é {:.2f}".format( (kwh / 0.65) ));
 
 def comercial_choise():
