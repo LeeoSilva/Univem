@@ -8,7 +8,7 @@ import time;
 
 def rocketState(sec):
 	state = "Esperando instruções de lançamento"
-	if( sec < 100 and sec > 90 ):    state =  "Ligando Motores principais";
+	if  ( sec < 100 and sec > 90 ):  state =  "Ligando Motores principais";
 	elif( sec <= 90 and sec > 80 ):  state = "Carregamento de oxigênio liquido";
 	elif( sec <= 80 and sec > 70 ):  state = "Ligando propulsores";
 	elif( sec <= 70 and sec > 60 ):  state = "Checando variaveis climaticas";
@@ -17,7 +17,7 @@ def rocketState(sec):
 	elif( sec <= 40 and sec > 30 ):  state = "Teste de atuador de vetor de propulsão";
 	elif( sec <= 30 and sec > 20 ):  state = "Verificação de distância";
 	elif( sec <= 20 and sec > 10 ):  state = "Presurização de tanque de propulsão";
-	elif( sec <= 10 and sec > 5 ):   state = "Checagem de pirotecnia de braço";
+	elif( sec <= 10 and sec > 5  ):  state = "Checagem de pirotecnia de braço";
 	elif( sec <= 5  and sec > 0  ):  state = "Ignição do motor Merlin";
 	elif( sec == 0 ):                state = "DECOLAGEM";
 	return state;
