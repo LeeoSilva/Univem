@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # Escreva um program que leia dois números e que pergunte qual operação você deseja
 # realizar. Você deve poder calcular a soma (+), subtração (-), multiplicação (*) e divisão
@@ -11,7 +12,6 @@ def sum():
 	print("{} + B".format(a));
 	b = float(input("Informe a variavel B: "))
 	print("{} + {} = {}".format(a, b, (a + b)));
-	return a + b;
 
 def sub():
 	print("\n A - B");
@@ -19,7 +19,6 @@ def sub():
 	print("{} - B".format(a));
 	b = float(input("Informe a variavel B: "))
 	print("{} - {} = {}".format(a, b, (a - b)));
-	return a + b;
 
 def mult():
 	print("\n A * B");
