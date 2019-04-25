@@ -32,8 +32,8 @@ def four_alg(number, iterations = 0):
     result = bigger - smaller
     print("Maior_valor - Menor_Valor -> {} - {} = {}".format(bigger, smaller, result))
 
-    if result == MAGIC_NUMBER: print("{} iterações".format(iterations+1))
-    else: four_alg(result, (iterations+1))
+    if result == MAGIC_NUMBER: print("{} iterações".format(iterations+1)); exit()
+    four_alg(result, (iterations+1))
     
 def three_alg(number, iterations = 0):
     # Convergin the value to 495 recursevely.
@@ -56,8 +56,8 @@ def three_alg(number, iterations = 0):
     print("Maior_valor - Menor_valor -> {} - {} = {}".format(bigger, smaller, result)) 
     
 
-    if result == MAGIC_NUMBER: print("{} iterações".format(iterations+1))
-    else: three_alg(result, (iterations+1))
+    if result == MAGIC_NUMBER: print("{} iterações".format(iterations+1)); exit()
+    three_alg(result, (iterations+1))
 
 
 if __name__ == "__main__":
