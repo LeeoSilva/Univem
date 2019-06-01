@@ -2,6 +2,9 @@
 
 # Cria um programa que leia uma string e conte quantas palavras existem na string.
 
-if __name__ == "__main__":
+def countWords(str): return len(str.split()); 
 
+if __name__ == "__main__":
+    str = input("Informe uma string: ");
+    print(countWords(str));
 
