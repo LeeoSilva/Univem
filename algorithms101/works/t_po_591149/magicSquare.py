@@ -3,11 +3,18 @@
 # Quadrado é uma matriz quadrada de lado N, onde a soma dos números das linhas, das
 # colunas e das diagonais é constante, sendo que nenhum destes números se repete.
 
-def squareSomation(matrix):
-    value = int(0)
+
+def rows(matrix):
     for i in range(len(matrix)):
-        for j in range(len(matrix)): value += matrix[i][j];
-    return value // len(matrix);
+        for j in range(len(matrix[0])):
+            value += matrix[j][i];
+            if (value == somation(matrix) 
+
+#def cols(matrix):
+#def diagonals(matrix):
+
+
+def squareSomation(matrix): return (rows(matrix) + cols(matrix) + diagonals(matrix))
 
 def generateMatrix(N): return [[0]*N for i in range(N)] 
 def somation(N): return ((N + (N**3)) // 2)
@@ -26,6 +33,7 @@ def populateMatrix(N):
             matrix[i][j] = int(input("Informe o valor: "));
             visualizeMatrix(matrix);
     return matrix;
+
 
 if __name__ == "__main__":
     N = int(input("Informe o lado da matrix: ")) 
