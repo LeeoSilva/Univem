@@ -43,11 +43,8 @@ void loop(){
 
 
 	Serial.println(valueLDR);
-	if (HIGH_LIGHT)
-		ledOn(PIN_GREEN);
-	else if(INTER_LIGHT) 
-		ledOn(PIN_YELLOW);
-	else if(LOW_LIGHT) 
-		ledOn(PIN_RED);
+	if (HIGH_LIGHT)      ledOn(PIN_GREEN);
+	else if(INTER_LIGHT) ledOn(PIN_YELLOW);
+	else if(LOW_LIGHT)   ledOn(PIN_RED);
 	delay(250);
 }
