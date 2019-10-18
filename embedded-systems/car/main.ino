@@ -14,33 +14,16 @@ AF_DCMotor motor2(LEFT_MOTOR_PIN);
 
 Servo servo;
 
+enum class servo_angle {
+	RIGHT = 0,
+	FRONTAL = 90,
+	LEFT = 180
+};
 
-unsigned turnServo(){ // return value is the angle of the servo
-	static unsigned pos = 0;
-	unsigned next_pos = 0;
-	bool dir = 0; // 0 -> RIGHT
-				  // 1 -> LEFT  
 
-	if(pos == 0){
-		next_pos = 90;	
-		dir = 0;
-	}
-	else if(pos == 90 && dir == 0) next_pos = 180;
-	else if(pos == 90 && dir == 1) next_pos = 0;
-	else if(pos == 180) {
-		next_pos = 90;
-		dir = 1;
-	}
-	else{
-		next_pos = 0;
-		dir = 0;
-	}
-
-	for(; pos != next_pos; delay(10)){
-		servo.write(pos);
-		pos = dir ? (--pos) : (++pos);
-	}
-	return pos;
+void turnServo(const servo_angle& target_angle){
+	for(unsigned angle = 0; angle != target_angle; delay(10))
+		servo.write(angle);
 }
 
 int getDistance(){ 
@@ -79,13 +62,13 @@ void setup() {
 	motor1.setSpeed(255); // Max speed for the right motor.
 	motor2.setSpeed(255); // Max speed for the left  motor.
 
+	servo_angle servo_state = servo_angle.RIGHT;
 	servo.attach(SERVO_PIN);
 }
 
 void driveLogic(){
 	static unsigned ultra_distance = getDistace();
-
-	if(ultra_distance <= 10
+	if(ultra_distance <= 10 
 
 
 }
