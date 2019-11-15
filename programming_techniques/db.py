@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print("Consumo total: {} kW".format(consumo_total))
     for i in range(n):
         individual_cost = float(eletro[i]['potencia'] * eletro[i]['tempoAtivo'])
-        print("{}: {0:.2f}%".format(eletro[i]['nome'], getPercentage(individual_cost, consumo_total)))
+        print("{}: {:.2f}%".format(eletro[i]['nome'], getPercentage(individual_cost, consumo_total)))
 
 
       
