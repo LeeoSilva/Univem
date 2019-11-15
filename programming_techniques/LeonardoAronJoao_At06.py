@@ -2,6 +2,7 @@
 
 # Leonardo Camargo - RM: 591149
 # Aron Vinícius - RM: 589977
+# João G - RM: 588466
 
 import sys; # Lib for entering the name of the file.
 import pickle;
