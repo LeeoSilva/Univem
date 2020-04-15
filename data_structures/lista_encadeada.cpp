@@ -137,8 +137,8 @@ int buscar(lista * lst, char nome[]){
 
     while(aux != NULL){
         if(strcmp(nome, aux->info.nome)==0) break;
-            aux = aux->prox;
-            i++;
+        aux = aux->prox;
+        i++;
     }
     if(aux==NULL) return FAILED;
     return i;
@@ -179,7 +179,7 @@ void showOptions(){
     printf("6- Listar\n");
     printf("7- Buscar\n");
     printf("8- Inverter\n"); 
-    printf("9- Adicionar multiplos clientes em ordem de idade\n");
+    printf("9- Adicionar clientes por ordem de idade\n");
     printf("10- Buscar\n");
     printf("11- Sair\n");
 }
@@ -191,7 +191,8 @@ void populateCliente(cliente* client){
 
     printf("Insira a idade de %s:\n", client->nome);
     fflush(stdin);
-    scanf("%i", &client->idade);
+    scanf("%d", &client->idade);
+    printf("Registrado com sucesso\n");
 }
 
 int showClient(cliente* client){
@@ -212,11 +213,74 @@ size_t getPosFromUser(){
     return pos;
 }
 
-void pushInAgeOrder(lista* list, lista listToBeAdded){
+
+void populateList(lista* list, size_t n){
+    cliente client;
+    cliente* p_client = &client;
+    unsigned i;
+    for(i = 0; i < n; ++i){
+        populateCliente(p_client);
+        inserirFinal(&list, client);
+    }
+}
+
+int definirTamanho(lista* p_list){
+    size_t numNewClients;
+    printf("Insira o numero de clientes a serem adicionados:\n");
+    fflush(stdin);
+    scanf("%d", &numNewClients);
+    p_list = (lista*)calloc(numNewClients, sizeof(cliente));
+    return numNewClients; 
+}
+
+void orderByIdade(lista* list){
+    lista listaToBeAdded; 
+    lista* p_listaToBeAdded = &listaToBeAdded;
+    size_t numNewClients = 0;
+    populateList(p_listaToBeAdded, numNewClients);
+}
+
+void pushInAgeOrder(lista** lst, cliente client) {
     // Crie uma função que recebe uma lista e adiciona novos clientes em ordem  
     // crescente de idade 
-        
+    lista* aux = *lst;
+    lista* next;
+    lista* newL;
+
+    if (aux == NULL) {
+        newL = (lista*) calloc(1,sizeof(lista));
+        newL->info = client;
+        newL->prox = aux;
+        *lst = newL;
+        return;
+    }
+    if (client.idade <= aux->info.idade) {
+        newL = (lista*) calloc(1,sizeof(lista));
+        newL->info = client;
+        newL->prox = aux;
+        *lst = newL;
+        return;
+    }
+    next= aux->prox;
+    while (next != NULL) {
+        if (client.idade <= next->info.idade) {
+            newL = (lista*) calloc(1,sizeof(lista));
+            newL->info = client;
+            newL->prox = next;
+            aux->prox = newL;
+            return;
+        } else {
+            aux = aux->prox;
+            newL = aux->prox;
+        }
+    }
+
+    newL = (lista*) calloc(1,sizeof(lista));
+    newL->info = client;
+    newL->prox = NULL;
+    aux->prox = newL;
 }
+
 
 int invertList(lista** list){
     // Crie uma função que recebe uma lista e inverte ela (apenas mudando os ponteiros 
@@ -243,7 +307,11 @@ int main(void){
     cliente clienteAux;
     cliente * p_cliente = &clienteAux;
 
+    lista listaAux2;
+    lista* p_listaAux2 = &listaAux2;
+
     int option;
+    size_t size;
     size_t pos;
     char idade;
     char nome[BUFFER_SIZE];
@@ -297,6 +365,9 @@ int main(void){
                     printf("Invertido com sucesso\n");
                 break;
             case PUSH_AGE_ORDER: 
+                populateCliente(p_cliente);
+                pushInAgeOrder(&p_list, clienteAux);
+
                 break; 
             default:
                 return 0;
