@@ -1,2 +1,5 @@
 *.zip
 *.rar
+*.out
+:wq
+
