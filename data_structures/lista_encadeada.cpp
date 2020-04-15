@@ -21,8 +21,7 @@ void inicializar(lista ** lst){
     *lst = NULL;
 }
 
-
-int inserirInicio(lista ** lst, cliente c){ // DONE
+int inserirInicio(lista ** lst, cliente c){
     lista * aux;
     aux = (lista*) calloc(1,sizeof(lista));
     aux->info = c;
@@ -100,13 +99,11 @@ void mostrarN(lista * l, int n){
     }
 }
 
-int inserirPosicao(lista ** lst, int n, cliente c){ // DONE 
+int inserirPosicao(lista ** lst, int n, cliente c){
     lista * aux = *lst;
     lista * aux2;
     int i=0;
-    if(n==0){
-        return inserirInicio(lst, c);
-    }
+    if(n==0) return inserirInicio(lst, c); 
 
     for(i = 0; i < n-1; ++i){
         if(aux->prox == NULL){
@@ -138,20 +135,13 @@ int buscar(lista * lst, char nome[]){
     int i=0;
     lista * aux = lst;
 
-    while(aux!=NULL){
-        if(strcmp(nome,aux->info.nome)==0){
-            break;
-        } else {
+    while(aux != NULL){
+        if(strcmp(nome, aux->info.nome)==0) break;
             aux = aux->prox;
             i++;
-        }
     }
-    if(aux==NULL) {
-        return FAILED;
-    }
-    else {
-        return i;
-    }
+    if(aux==NULL) return FAILED;
+    return i;
 }
 
 int tamanho(lista * lst){
@@ -164,7 +154,7 @@ int tamanho(lista * lst){
     return i;
 }
 
-int inserirFinal(lista ** lst, cliente c){ // DONE
+int inserirFinal(lista ** lst, cliente c){
     lista * aux = *lst;
     lista * aux2;
     if(aux==NULL){
@@ -181,14 +171,17 @@ int inserirFinal(lista ** lst, cliente c){ // DONE
 }
 
 void showOptions(){
-    printf("1- Inserir no inicio\n"); // DONE
-    printf("2- Inserir na posição\n"); // DONe
-    printf("3- Inserir no final\n"); // DONE
-    printf("4- Acessar cliente\n"); // DONE
-    printf("5- Eliminar\n"); // DONE
-    printf("6- Listar\n"); // DONE -> mostrarTodos
-    printf("7- Buscar\n"); // DONE
-    printf("8- Sair\n\n"); // DONE
+    printf("1- Inserir no inicio\n");
+    printf("2- Inserir na posição\n");
+    printf("3- Inserir no final\n");
+    printf("4- Acessar cliente\n");
+    printf("5- Eliminar\n");
+    printf("6- Listar\n");
+    printf("7- Buscar\n");
+    printf("8- Inverter\n"); 
+    printf("9- Adicionar multiplos clientes em ordem de idade\n");
+    printf("10- Buscar\n");
+    printf("11- Sair\n");
 }
 
 void populateCliente(cliente* client){
@@ -219,9 +212,30 @@ size_t getPosFromUser(){
     return pos;
 }
 
+void pushInAgeOrder(lista* list, lista listToBeAdded){
+    // Crie uma função que recebe uma lista e adiciona novos clientes em ordem  
+    // crescente de idade 
+        
+}
+
+int invertList(lista** list){
+    // Crie uma função que recebe uma lista e inverte ela (apenas mudando os ponteiros 
+    lista* prev = NULL;
+    lista* actual = *list; 
+    lista* next = NULL;
+    while(actual != NULL){
+        next = actual->prox;
+        actual->prox = prev; 
+        prev = actual; 
+        actual = next;
+    }
+    *list = prev;
+    return 0;
+}
+
 int main(void){
     enum options{ // The exit option is not necessary
-        UNSHIFT = 1, SPLICE, CONCAT, ACCESS, ELIMINATE, LIST, SEARCH
+        UNSHIFT = 1, SPLICE, CONCAT, ACCESS, ELIMINATE, LIST, SEARCH, INVERT, PUSH_AGE_ORDER
     };
 
     lista listaAux;
@@ -237,7 +251,7 @@ int main(void){
     inicializar(&p_list);
 
     // menu segment
-    while(option != 8){
+    for(;;){
         showOptions();
         scanf("%d", &option);
         fflush(stdin);
@@ -278,6 +292,12 @@ int main(void){
                 scanf("%s", nome);
                 showClient(acessar(p_list, buscar(p_list, nome)));
                 break;
+            case INVERT: 
+                if(invertList(&p_list) == 0)
+                    printf("Invertido com sucesso\n");
+                break;
+            case PUSH_AGE_ORDER: 
+                break; 
             default:
                 return 0;
         }
