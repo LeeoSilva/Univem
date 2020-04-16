@@ -180,8 +180,7 @@ void showOptions(){
     printf("7- Buscar\n");
     printf("8- Inverter\n"); 
     printf("9- Adicionar clientes por ordem de idade\n");
-    printf("10- Buscar\n");
-    printf("11- Sair\n");
+    printf("10- Sair\n");
 }
 
 void populateCliente(cliente* client){
