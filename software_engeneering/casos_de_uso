@@ -1,0 +1,40 @@
+Controle de presença de funcionario
+
+    Ator Primario: Gerente 
+    Ator Secundario: Funcionario 
+
+    interessados e interesse:
+        Afim de validar e certificar a presença de seus funcionarios utiliza um sistema de 
+        folha de ponto.
+
+    pre-condições: funcionario esteja cadastrado no sistema e contratado.
+    garantia de sucesso: funcionário consegue validar sua 
+
+casos de sucesso:
+    1. O funcionario chega em seu horario comum de trabalho
+    2. Se dirige até a maquina
+    3. Inputa sua digital no sensor da maquina
+    4. Um bipe de sucesso é reproduzido pela maquina.
+    5. Funcionario retira um papel comprovando o horario de chegada ou saida do estabelecimento.
+
+extensões
+    a) A maquina está em manutenção:
+        1. O funcionario relata ao RG/Gerência sobre atrasos ou saidas precoces; 
+    b) A maquina está sem tinta para imprimir o papel comprovante.
+        1. O funcionário ainda deve inputar sua digital na maquina para fins de registro.
+    c) O funcionário ainda não foi cadastrado.
+        1. O funcionario deve comunicar um membro da gerencia para lhe dar acesso ao sistema de calibragem de digitais da 
+        maquina para cadastro.
+        2. cliente realiza o cadastro na maquina.
+        3. Sistema imprime papel comprovante.
+    d) Horario da maquina está incoerente com o fuso horario atual.
+        1. O funcionario ainda deve inputar sua digital na maquina para fins de registro,
+        logo que seus registros serão calculados novamente após o horario correto for configurado na maquina.
+
+
+
+
+
+plataforma para disponinilização das informações:
+
+    Ator primario:  
