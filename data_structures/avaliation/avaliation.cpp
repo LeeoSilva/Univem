@@ -66,6 +66,27 @@ int push(list** lst, int c){
     return 0;
 }
 
+void switchAG(list** lst, lista ** end){
+    list* aNode = *lst; // struct to get the values from the original struct 
+    list* gNode = *end->prev; // G
+    list* bNode = aNode->next;
+
+    aNode->next = *end; // makes the A node point to the end 
+    *end->prev = aNode; // makes the last node point to A node
+
+
+    // making F to A and H to NULL
+    aNode->prev = fNode->prev; 
+    (fNode->prev)->prox= aNode;
+    fNode->next = bNode;
+    (fNode->next)->prev= fNode;
+    fNode->prev= NULL;
+
+    *lst= fNode; // points the begginning of the list to F
+}
+
+
+
 list* divide(list* l, int n) {
     list* aux = l; // array to get the values from the original list
     list* newList; // list to be returned
