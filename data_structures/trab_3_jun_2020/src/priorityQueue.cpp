@@ -13,8 +13,6 @@ int inserirInicio(priorityQueue** lst, char pass[]){
     return 0;
 }
 
-
-
 void mostrarTodos(priorityQueue * l){
     priorityQueue *aux = l;
     while(aux!=NULL){

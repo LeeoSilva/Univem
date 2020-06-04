@@ -21,8 +21,8 @@ typedef struct _client{
     enum _level priorityLevel;
 } client;
 
-void getDeficientPass(const int number, char* output);
-void getPregnantPass(const int number, char* output);
-void getAgedPass(const int number, char* output);
-void getNormalPass(const int number, char* output);
-void prepareNumber(const int number, char* output);
+const char* getDeficientPass(const int number);
+const char* getPregnantPass(const int number);
+const char* getAgedPass(const int number);
+const char* getNormalPass(const int number);
+const char* prepareNumber(const int number);

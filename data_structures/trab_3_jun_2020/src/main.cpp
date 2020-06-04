@@ -3,10 +3,16 @@
 #include "../headers/client.hpp"
 #include "../headers/menu.hpp"
 
+
+
 int main(void){
     int userChoise = drawMenuAndGetUserDecition();
     switch(userChoise){
-        case GET_PASS_NORMAL: printf("Normal\n");break;
+        case GET_PASS_NORMAL: 
+            char pass[BUFFER_SIZE];
+            getNormalPass(1, pass);
+            printf("%s", pass);
+            break;
         case GET_PASS_AGED: printf("Aged\n"); break;
         case GET_PASS_PREGNANT: printf("Pregnant\n"); break;
         case GET_PASS_DEFICIENT: printf("Deficient\n"); break;
