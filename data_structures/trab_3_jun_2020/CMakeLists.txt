@@ -10,8 +10,20 @@ add_library(priorityQueue
     ./src/priorityQueue.cpp
 )
 
+add_library(menu
+    ./headers/menu.hpp
+    ./src/menu.cpp
+)
+
+add_library(client
+    ./headers/client.hpp
+    ./src/client.cpp
+)
+
 add_executable(${PROJECT_NAME}
     ./src/main.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} priorityQueue)
+target_link_libraries(${PROJECT_NAME} menu)
+target_link_libraries(${PROJECT_NAME} client)
