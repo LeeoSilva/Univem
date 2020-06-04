@@ -19,8 +19,8 @@ extern enum _level {
 
 typedef struct _queue {
     char pass[BUFFER_SIZE];
-    struct _queue* next;
 } queue;
+
 
 static void prepareNumber(const int number, char* output);
 void getDeficientPass(const int number, char* output);
@@ -28,5 +28,6 @@ void getPregnantPass(const int number, char* output);
 void getAgedPass(const int number, char* output);
 void getNormalPass(const int number, char* output);
 void insertStart(queue* row, const char* c);
-void initialize(queue** row);
+void insertEnd(queue* row, const char* c);
+void initialize(queue* row);
 void showAll(queue* row);

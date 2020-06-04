@@ -17,8 +17,9 @@ int drawMenuAndGetUserDecision(){
 
 
 
-void getPassAndRegister(const unsigned char priority, _priorityQueue* queues){
-    const int len = getSize(queues, priority);
+void getPassAndRegister(const unsigned char priority, priorityQueue* queues){
+    const int len = queues->length;
+    printf("len: %d\n", len);
     char output[BUFFER_SIZE]; 
     if(priority == NORMAL) getNormalPass(len, output);
     else if(priority == DEFICIENT) getDeficientPass(len, output);
