@@ -24,6 +24,5 @@ void getPassAndRegister(const unsigned char priority, _priorityQueue* queues){
     else if(priority == DEFICIENT) getDeficientPass(len, output);
     else if(priority == PREGNANT) getPregnantPass(len, output);
     else if(priority == AGED) getAgedPass(len, output);
-    printf("Sua nova senha é: %s\n", output);
-    
+    insert(queues, output, priority);
 }

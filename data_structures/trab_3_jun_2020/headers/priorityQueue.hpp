@@ -1,5 +1,4 @@
 #pragma once 
-#define MAX_QUEUE_SIZE 999
 #define NUMBER_OF_QUEUES 3
 
 #include <stdlib.h>
@@ -13,6 +12,8 @@ typedef struct _priorityQueue {
 } priorityQueue;
 
 unsigned getSize(const priorityQueue* rows, const unsigned char priority);
-void showAll(priorityQueue* queues);
+unsigned getSize(const queue** rows, const unsigned char priority);
+void showAll(const priorityQueue* queues);
+void showRow(const queue* row);
 void insert(priorityQueue* row, const char* pass, const unsigned char priority);
 void remove(queue* row, const char* pass);

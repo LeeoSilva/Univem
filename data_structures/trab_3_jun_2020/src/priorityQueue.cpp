@@ -1,18 +1,31 @@
 #include "../headers/priorityQueue.hpp"
 
 
-int insert(_priorityQueue** row, const char* pass, const unsigned char priority){
-    printf("it reached insert\n");
+void insert(priorityQueue* row, const char* pass, const unsigned char priority){
     _priorityQueue * aux;
-    aux = (_priorityQueue*) calloc(1, sizeof(_priorityQueue));
-    strcpy(aux->queues[priority].pass, pass);
-    return 0;
+    insertStart(&aux->queues[priority], pass);
 }
 
-unsigned getSize(const _priorityQueue* rows, const unsigned char priority){
+unsigned getSize(const priorityQueue* rows, const unsigned char priority){
     return sizeof(rows->queues) / sizeof(rows->queues[priority]);
 }
 
-void showAll(_priorityQueue * l){ }
+unsigned getSize(const queue** rows, const unsigned char priority){
+    return sizeof(rows) / sizeof(rows[priority]);
+}
+
+void showRow(const queue* row){
+    unsigned i = 0;
+    for(; i <= getSize(&row, i); ++i)
+        printf("%s", row[i].pass);
+}
+    
+
+void showAll(const priorityQueue * rows){ 
+    unsigned i = 0;
+    for(; i <= NUMBER_OF_QUEUES; ++i){
+        showRow(&rows->queues[i]);
+    }
+}
 
 

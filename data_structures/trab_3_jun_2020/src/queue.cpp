@@ -42,3 +42,24 @@ void getNormalPass(const int number, char* output){
     strcat(pass, actualNumber);
     strcpy(output, pass);
 }
+
+
+void insertStart(queue* row, const char* c){
+    queue* aux;
+    aux = (queue*) calloc(1, sizeof(queue));
+    strcpy(aux->pass, c);
+    aux->next = row;
+    *row = *aux;
+}
+
+void initialize(queue** row){
+    *row= NULL;
+}
+
+void showAll(queue* row){
+    queue* aux = row;
+    while(aux != NULL){
+        printf("Senha: %s\n", aux->pass);
+        aux = aux->next;
+    }
+}
