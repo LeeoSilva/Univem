@@ -1,19 +1,18 @@
 #pragma once 
+#define MAX_QUEUE_SIZE 999
+#define NUMBER_OF_QUEUES 3
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstring>
 
-#include "../headers/client.hpp"
+#include "../headers/queue.hpp"
 
 typedef struct _priorityQueue {
-    client person; 
-    _priorityQueue* next;
+    queue queues[NUMBER_OF_QUEUES];
 } priorityQueue;
 
-
-static int tamanho(priorityQueue * lst);
-void inicializar(priorityQueue** lst);
-void mostrarTodos(priorityQueue * l);
-void destruir(priorityQueue ** lst);
-int inserirInicio(priorityQueue** lst, char* pass);
-int eliminar(priorityQueue ** lst, int n);
+unsigned getSize(const priorityQueue* rows, const unsigned char priority);
+void showAll(priorityQueue* queues);
+void insert(priorityQueue* row, const char* pass, const unsigned char priority);
+void remove(queue* row, const char* pass);

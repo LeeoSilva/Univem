@@ -10,20 +10,22 @@ add_library(priorityQueue
     ./src/priorityQueue.cpp
 )
 
-add_library(menu
-    ./headers/menu.hpp
-    ./src/menu.cpp
+add_library(queue
+    ./headers/queue.hpp
+    ./src/queue.cpp
 )
 
-add_library(client
-    ./headers/client.hpp
-    ./src/client.cpp
+add_library(actions
+    ./headers/actions.hpp
+    ./src/actions.cpp
 )
 
 add_executable(${PROJECT_NAME}
     ./src/main.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} priorityQueue)
-target_link_libraries(${PROJECT_NAME} menu)
-target_link_libraries(${PROJECT_NAME} client)
+target_link_libraries(priorityQueue queue) # priorityQueue depends on queue
+target_link_libraries(actions priorityQueue) # actions depends on priorityQueue
+target_link_libraries(${PROJECT_NAME} actions ) # project depends on actions
+
+

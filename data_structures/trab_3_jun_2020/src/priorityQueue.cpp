@@ -1,25 +1,18 @@
 #include "../headers/priorityQueue.hpp"
 
-void inicializar(priorityQueue** lst){
-    *lst = NULL;
-}
 
-int inserirInicio(priorityQueue** lst, char pass[]){
-    priorityQueue * aux;
-    aux = (priorityQueue*) calloc(1,sizeof(priorityQueue));
-    strcpy(aux->person.pass, pass);
-    aux->next = *lst;
-    *lst = aux;
+int insert(_priorityQueue** row, const char* pass, const unsigned char priority){
+    printf("it reached insert\n");
+    _priorityQueue * aux;
+    aux = (_priorityQueue*) calloc(1, sizeof(_priorityQueue));
+    strcpy(aux->queues[priority].pass, pass);
     return 0;
 }
 
-void mostrarTodos(priorityQueue * l){
-    priorityQueue *aux = l;
-    while(aux!=NULL){
-        printf("Senha: %s\n", aux->person.pass);
-        aux = aux->next;
-    }
-
+unsigned getSize(const _priorityQueue* rows, const unsigned char priority){
+    return sizeof(rows->queues) / sizeof(rows->queues[priority]);
 }
+
+void showAll(_priorityQueue * l){ }
 
 

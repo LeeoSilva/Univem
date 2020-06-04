@@ -1,24 +1,18 @@
 // headers
-#include "../headers/priorityQueue.hpp"
-#include "../headers/client.hpp"
-#include "../headers/menu.hpp"
-
-
+#include "../headers/actions.hpp"
 
 int main(void){
-    int userChoise = drawMenuAndGetUserDecition();
+    _priorityQueue queues;
+
+    int userChoise = drawMenuAndGetUserDecision();
     switch(userChoise){
-        case GET_PASS_NORMAL: 
-            char pass[BUFFER_SIZE];
-            getNormalPass(1, pass);
-            printf("%s", pass);
-            break;
-        case GET_PASS_AGED: printf("Aged\n"); break;
-        case GET_PASS_PREGNANT: printf("Pregnant\n"); break;
-        case GET_PASS_DEFICIENT: printf("Deficient\n"); break;
+        case GET_PASS_NORMAL: getPassAndRegister(NORMAL, &queues); break;
+        case GET_PASS_AGED: getPassAndRegister(AGED, &queues); break;
+        case GET_PASS_PREGNANT: getPassAndRegister(PREGNANT, &queues); break;
+        case GET_PASS_DEFICIENT: getPassAndRegister(DEFICIENT, &queues); break;
         case CALL_NEXT: printf("call_next\n"); break;
         case SHOW_QUEUE: printf("show_queue\n"); break;
-        case EXIT: return 0;
+        case EXIT: return 0; // TODO: remove heap allocation to prevent memory leak
         default: printf("Ação inválida! Fechando Sistema.\n"); return 0;
     };
 }
