@@ -25,5 +25,7 @@ void getPassAndRegister(const unsigned char priority, priorityQueue* queues){
     else if(priority == DEFICIENT) getDeficientPass(len, output);
     else if(priority == PREGNANT) getPregnantPass(len, output);
     else if(priority == AGED) getAgedPass(len, output);
-    insert(queues, output, priority);
+    insert(queues, output);
 }
+
+

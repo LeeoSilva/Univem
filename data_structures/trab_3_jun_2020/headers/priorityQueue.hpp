@@ -14,12 +14,11 @@ typedef struct _priorityQueue {
     int end;
 } priorityQueue;
 
-
 unsigned getSize(const priorityQueue* rows, const unsigned char priority);
 unsigned getSize(const queue** rows, const unsigned char priority);
-int checkFull(const priorityQueue* row);
-void showAll(const priorityQueue* row);
-void showRow(const queue* row);
-void remove(queue* row, const char* pass);
 void initialize(priorityQueue* row);
-int insert(priorityQueue* row, const char* pass, const unsigned char priority);
+void displayQueue(priorityQueue* row);
+void remove(queue* row, const char* pass);
+int call_next_in_queue(priorityQueue* row);
+int checkFull(const priorityQueue* row);
+int insert(priorityQueue* row, const char* pass);

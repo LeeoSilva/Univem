@@ -27,7 +27,7 @@ void getDeficientPass(const int number, char* output);
 void getPregnantPass(const int number, char* output);
 void getAgedPass(const int number, char* output);
 void getNormalPass(const int number, char* output);
+
 void insertStart(queue* row, const char* c);
 void insertEnd(queue* row, const char* c);
 void initialize(queue* row);
-void showAll(queue* row);
