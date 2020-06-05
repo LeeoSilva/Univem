@@ -15,8 +15,6 @@ int drawMenuAndGetUserDecision(){
     return userChoise;
 }
 
-
-
 void getPassAndRegister(const unsigned char priority, priorityQueue* queues){
     const int len = queues->length;
     printf("len: %d\n", len);
