@@ -1,7 +1,5 @@
 #include "../headers/priorityQueue.hpp"
 
-
-
 unsigned getSize(const priorityQueue* rows, const unsigned char priority){
     return sizeof(rows->queues) / sizeof(rows->queues[priority]);
 }

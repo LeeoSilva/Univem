@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 2.8)
-project( RubiksCV )
-find_package( OpenCV REQUIRED )
-add_executable( RubiksCV rubiks-cv.cpp )
-target_link_libraries( RubiksCV ${OpenCV_LIBS} )
