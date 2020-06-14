@@ -95,6 +95,14 @@ void getPairs(const int target, int* arr, const size_t len){
     }
 } 
 
+/**
+ * Compute a number of execution time  
+ * tests on searchArrayBinary function
+ * and getPairs function and print his 
+ * results.
+ * 
+ * @return {void}
+ */
 void runTests(){
     const unsigned INCREMENT = 5000; 
     constexpr unsigned NUMBER_OF_TESTS = (MAX_ARRAY_SIZE / INCREMENT);
@@ -106,13 +114,17 @@ void runTests(){
     for(unsigned testNumber = 0; (testNumber <= NUMBER_OF_TESTS && arraySize <= MAX_ARRAY_SIZE); ++testNumber){
         int arr[arraySize];
         generateSetOfNumbers(arr, arraySize);
+
         clock_t begin = clock();
         searchArrayBinary(arr[5], arr, arraySize);
+
         clock_t searchArrayBinaryTimestamp = clock();
         getPairs((arr[5] + arr[6]), arr, arraySize);
+
         clock_t getPairsTimestamp = clock();
         searchArrayBinaryTime = (double)(searchArrayBinaryTimestamp - begin) / CLOCKS_PER_SEC;
         getPairsTime = (double)(getPairsTimestamp - begin) / CLOCKS_PER_SEC;
+
         printf("TEST NUMBER %d =========================\n", testNumber);
         printf("ARRAY SIZE: \t\t\t%d\n", arraySize);
         printf("SEARCH ALGORITHM: \t\t%f\n", searchArrayBinaryTime);
