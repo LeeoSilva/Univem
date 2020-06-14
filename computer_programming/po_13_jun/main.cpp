@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <cmath>
+#include <time.h>
 
-#define MAX_ARRAY_SIZE 10 
+#define MAX_ARRAY_SIZE 100000
 
 /**
  * Compare function used to recursively
@@ -32,7 +33,9 @@ static int compare( const void* a, const void* b) {
  * @return {void}
  */
 void generateSetOfNumbers(int* arr, const size_t len) {
-    for(int i = len-1; i >= 0; --i) arr[i] = rand() % (len * 10);
+    for(int i = len-1; i >= 0; --i){
+        arr[i] = rand() % (len * 10);
+    }
     qsort(arr, len, sizeof(int), compare);
 }
 
@@ -44,7 +47,7 @@ void generateSetOfNumbers(int* arr, const size_t len) {
  * @return {void}
  */
 void drawArray(const int* arr, const size_t len){
-    for(int i = len-1; i >= 0; --i) printf("%d: %d\n", i ,arr[i]);
+    for(unsigned i = len-1; i >= 0; --i) printf("%d: %d\n", i ,arr[i]);
 }
 
 /**
@@ -59,7 +62,7 @@ void drawArray(const int* arr, const size_t len){
  */
 int searchArrayBinary(const int target, const int* arr, const size_t len){
     int i = 0;
-    int mid = floor(len * 0.5); 
+    unsigned mid = floor(len * 0.5); 
     if(arr[mid] == target) return mid;
     else if(arr[mid] > target) {
         for(i = mid; i >= 0; --i) if(arr[i] == target) return i;
@@ -84,7 +87,7 @@ void getPairs(const int target, int* arr, const size_t len){
     int j = len - 1;
     for(unsigned i = 0; i < j;) {
         if(arr[i] + arr[j] == target) {
-            printf("[%d, %d]\n", arr[i], arr[j]); 
+            // printf("[%d, %d]\n", arr[i], arr[j]); 
             arr[i] = -1; // making sure that it
             arr[j] = -1; // doesn't repeat pairs
         }
@@ -92,12 +95,35 @@ void getPairs(const int target, int* arr, const size_t len){
     }
 } 
 
-int main(void){
-    int arr[MAX_ARRAY_SIZE];
-    int index = -1;
+void runTests(){
+    const unsigned INCREMENT = 5000; 
+    constexpr unsigned NUMBER_OF_TESTS = (MAX_ARRAY_SIZE / INCREMENT);
+
+    unsigned arraySize = 5000;
+    double searchArrayBinaryTime = 0f;
+    double getPairsTime = 0f;
+
+    for(unsigned testNumber = 0; (testNumber <= NUMBER_OF_TESTS && arraySize <= MAX_ARRAY_SIZE); ++testNumber){
+        int arr[arraySize];
+        generateSetOfNumbers(arr, arraySize);
+        clock_t begin = clock();
+        searchArrayBinary(arr[5], arr, arraySize);
+        clock_t searchArrayBinaryTimestamp = clock();
+        getPairs((arr[5] + arr[6]), arr, arraySize);
+        clock_t getPairsTimestamp = clock();
+        searchArrayBinaryTime = (double)(searchArrayBinaryTimestamp - begin) / CLOCKS_PER_SEC;
+        getPairsTime = (double)(getPairsTimestamp - begin) / CLOCKS_PER_SEC;
+        printf("TEST NUMBER %d =========================\n", testNumber);
+        printf("ARRAY SIZE: \t\t\t%d\n", arraySize);
+        printf("SEARCH ALGORITHM: \t\t%f\n", searchArrayBinaryTime);
+        printf("PAIR ALGORITHM: \t\t%f\n", getPairsTime);
+        printf("\n");
+        arraySize += INCREMENT;
+    }
+}
+
+int main(void)  {
     srand(time(NULL));
-    generateSetOfNumbers(arr, MAX_ARRAY_SIZE);
-    index = searchArrayBinary(arr[2], arr, MAX_ARRAY_SIZE);
-    getPairs((arr[1] + arr[2]), arr, MAX_ARRAY_SIZE);
+    runTests();
     return 0;
 }
